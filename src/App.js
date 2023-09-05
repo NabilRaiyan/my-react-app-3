@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Form from './Components/Forms/Form';
+import Child from './Components/State Lifting/Child';
+import Todo from './Components/State Lifting/Todo';
+import NewTodo from './Components/State Lifting/newTodo';
+
+
+// Sending data from parent (App) to child (Child.js) and Sending data from Child.js to Parent(App) 
 
 function App() {
+  const data = "I am from parent";
+  const handleChildData = (childData)=>{
+    console.log(childData);
+  }
+
+  const handleNewTodo = (newTodoData)=>{
+    console.log(newTodoData);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Form />
+      <Todo title="Learn react js"/>
+     <Child  data2 = {data} onChildData={handleChildData}/>
+     <NewTodo onHandleNewTodo={handleNewTodo}/>
     </div>
   );
 }
